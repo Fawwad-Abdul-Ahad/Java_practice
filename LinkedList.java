@@ -11,6 +11,13 @@ public class LinkedList{
         ll.removeFirst();
         ll.removeLast();
         ll.printList();
+        System.out.println(ll.getSize());
+        ll.removeLast();
+        ll.printList();
+        System.out.println(ll.getSize());
+        ll.reverseLinkedlist();
+        ll.printList();
+
 
     }
    public class Node{
@@ -32,7 +39,7 @@ public class LinkedList{
     }
     newNode.next = head;
     head = newNode;
-
+    
    }
 
    public void addLast(Object data){
@@ -53,6 +60,7 @@ public class LinkedList{
             return;
          }
          head = head.next;
+         size--;
    }
 
    //remove last
@@ -60,6 +68,7 @@ public class LinkedList{
     if(head == null){
         return;
     }
+    size--;
     if(head.next == null){
         head = null;
         return;
@@ -76,7 +85,7 @@ public class LinkedList{
    }
 
 
-
+   //print whole list
    public void printList(){
     if(head == null){
         System.out.println("List is empty");
@@ -87,6 +96,32 @@ public class LinkedList{
         currNode = currNode.next;
     }
     System.out.println("null");
+   }
+
+   //prit size
+   public int getSize(){
+    return size;
+   }
+
+   public void reverseLinkedlist(){
+    
+    if(head.next ==null || head == null){
+        return;
+    }
+
+    Node prevNode = head;
+    Node currNode = prevNode.next;
+    while(currNode!=null){
+        Node nextNode = currNode.next;
+        currNode.next = prevNode;
+
+        // move forward
+        prevNode = currNode;
+        currNode = nextNode;
+    }
+    head.next = null;
+    head = prevNode;
+
    }
 
    
